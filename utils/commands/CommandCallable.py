@@ -13,13 +13,13 @@ class CommandCallable:
         self._use_arg = kwargs.get('use_arg', False)
         self._use_kwarg = kwargs.get('use_kwarg', False)
         self._use_response = kwargs.get('use_response', False)
-        self._text = kwargs.get('text', '')
+        self._text = kwargs.get('text', 'done')
 
     def __call__(self, *args, **kwargs):
         response = shell.execute(self._command)
         text = '\n'.join(response)
 
-        if self._use_response:
+        if self._use_response and text != '':
             to_response = text
         else:
             to_response = self._text
