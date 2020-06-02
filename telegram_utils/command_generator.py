@@ -14,6 +14,7 @@ def set_commands(dispatcher):
                                   callback=telegram_responser,
                                   use_response=description.response,
                                   text=description.text,
+                                  no_callback=description.no_callback,
                                   use_arg=True)
 
         command_handler = CommandHandler(description.command, command)

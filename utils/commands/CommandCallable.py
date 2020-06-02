@@ -14,6 +14,7 @@ class CommandCallable:
         self._use_kwarg = kwargs.get('use_kwarg', False)
         self._use_response = kwargs.get('use_response', False)
         self._text = kwargs.get('text', 'done')
+        self._no_callback = kwargs.get('no_callback', False)
 
     def __call__(self, *args, **kwargs):
         response = shell.execute(self._command)
@@ -32,7 +33,8 @@ class CommandCallable:
         if self._use_kwarg:
             kwargs = dict(command_response=to_response, **kwargs)
 
-        self._callback(*args, **kwargs)
+        if not self._no_callback:
+            self._callback(*args, **kwargs)
         return to_response
 
     def get_response(self):
