@@ -12,7 +12,9 @@ def set_commands(dispatcher):
         description = CommandDescription(**command_ditciontary)
         command = CommandCallable(command=description.shell_command,
                                   callback=telegram_responser,
-                                  response_arg=description.response)
+                                  use_response=description.response,
+                                  text=description.text,
+                                  use_arg=True)
 
         command_handler = CommandHandler(description.command, command)
         dispatcher.add_handler(command_handler)
