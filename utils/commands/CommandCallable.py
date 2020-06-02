@@ -1,4 +1,4 @@
-import shell
+from utils import shell
 
 
 def _voidcallback():

@@ -1,6 +1,6 @@
 import logging
 from telegram.ext import Updater
-from command_generator import set_commands
+from telegram_utils import command_generator
 import config
 
 logging.basicConfig(format='[%(asctime)s] %(levelname)s - %(message)s',
@@ -14,7 +14,7 @@ def main():
 
     dispatcher = updater.dispatcher
 
-    set_commands(dispatcher)
+    command_generator.set_commands(dispatcher)
 
     updater.start_polling()
 
