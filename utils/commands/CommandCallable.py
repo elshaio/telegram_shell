@@ -1,4 +1,7 @@
 from utils import shell
+import logging
+
+logger = logging.getLogger('CommandCallable')
 
 
 def _voidcallback():
@@ -15,8 +18,10 @@ class CommandCallable:
         self._use_response = kwargs.get('use_response', False)
         self._text = kwargs.get('text', 'done')
         self._no_callback = kwargs.get('no_callback', False)
+        self._description = kwargs.get('description', '')
 
     def __call__(self, *args, **kwargs):
+        logger.info('Ejecutando {}'.format(self._description))
         response = shell.execute(self._command)
         text = '\n'.join(response)
 
@@ -35,7 +40,11 @@ class CommandCallable:
 
         if not self._no_callback:
             self._callback(*args, **kwargs)
-        return to_response
+
+        if self._use_response:
+            return
+        else:
+            return to_response
 
     def get_response(self):
         return self._response

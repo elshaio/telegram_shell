@@ -2,13 +2,16 @@ import logging
 from telegram.ext import Updater
 from telegram_utils import command_generator
 import config
+import sys
 
-logging.basicConfig(format='[%(asctime)s] %(levelname)s - %(message)s',
+logging.basicConfig(format='[%(asctime)s] %(levelname)s %(name)s - %(message)s',
                     level=logging.INFO)
+
+logger = logging.getLogger('main')
 
 
 def main():
-    logging.info('Iniciando configuración')
+    logger.info('Iniciando configuración')
 
     updater = Updater(config.telegram_token, use_context=True)
 
@@ -18,9 +21,18 @@ def main():
 
     updater.start_polling()
 
-    logging.info('Bot iniciado')
+    logger.info('Bot iniciado')
 
 
 if __name__ == '__main__':
-    main()
+    args = sys.argv[1:]
+
+    option = ''
+    if len(args) > 0:
+        option = args[0]
+
+    if option == 'commands':
+        command_generator.print_commands()
+    else:
+        main()
 
