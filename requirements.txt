@@ -1,1 +1,2 @@
 python-telegram-bot
+git+https://github.com/elshaio/shell_pipes.git
