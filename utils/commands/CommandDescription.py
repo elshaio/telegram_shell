@@ -6,3 +6,8 @@ class CommandDescription:
         self.text = kwargs.get('text', 'Comando ejecutado')
         self.no_callback = kwargs.get('no_callback', False)
         self.description = kwargs.get('description', 'Comando')
+        self.group_id = kwargs.get('group')
+
+    def __str__(self):
+        return "{}-{}-{}-{}-{}-{}-{}".format(self.command, self.shell_command, self.response, self.text, self.no_callback, self.description, self.group_id)
+

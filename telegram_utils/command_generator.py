@@ -22,13 +22,15 @@ def telegram_responser(update, context, command_response, retries=3):
 def set_commands(dispatcher):
     for command_ditciontary in commands.commands:
         description = CommandDescription(**command_ditciontary)
+        logger.info(description)
         command = CommandCallable(command=description.shell_command,
                                   callback=telegram_responser,
                                   use_response=description.response,
                                   text=description.text,
                                   no_callback=description.no_callback,
                                   description=description.command,
-                                  use_arg=True)
+                                  use_arg=True,
+                                  group_id=description.group_id)
 
         command_handler = CommandHandler(description.command, command)
         dispatcher.add_handler(command_handler)
