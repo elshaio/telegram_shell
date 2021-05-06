@@ -1,7 +1,5 @@
 # Telegram Shell Bot
 
-[[_TOC_]]
-
 Éste es un bot para la ejecución de comandos de shell en línux a travez de un comando de bot, éstos por elmmomento son fijos.
 
 # Agregar comandos
