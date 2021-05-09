@@ -6,7 +6,7 @@ import config
 import sys
 
 logging.basicConfig(format='[%(asctime)s] %(levelname)s %(name)s - %(message)s',
-                    level=logging.INFO, filename="logs")
+                    level=logging.INFO, filename=config.logs_file)
 logger = logging.getLogger('main')
 
 
