@@ -18,6 +18,8 @@ Para agregar un nuevo comando al bot, es necesario editar el archivo `comandos.p
     'text': 'Soy un mensaje de respuesta',
     // Opcional, default False, Es utilizado para establecer si el callback que lanza la respuesta de telegram será ejecutado o no, si es True, no será enviada ninguna respuesta al cliente de telegram.
     'no_callback': False
+    // Opcional, default None, chat_id de un group que sólo podrá ejecutar los comandos en un grupo
+    'group': None
 }
 ```
 
@@ -27,7 +29,20 @@ Los comandos establecidos en `comandos.py` serán cargados por el archivo `teleg
 ## commands
 Al ejecutar el comando:
 ```sh
-python commands
+python main.py commands
 ```
 
 Éste imprimirá en terminal los comandos listados en `comandos.py` de manera conveniente para pegar en la descripción de comandos de telegram, éstos se toman de la manera `{comando} - {descripcion}`.
+
+## mensaje
+```sh
+python main.py mensaje chat_id mensaje largo
+```
+
+Enviará un mensaje usando el cliente de telegram, util para bash.
+
+## archivo
+```sh
+python main.py archivo chat_id /file
+```
+Enviará el archivo que se haya especificado.
