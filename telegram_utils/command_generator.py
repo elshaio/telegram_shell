@@ -1,6 +1,6 @@
 from telegram.ext import CommandHandler
 from utils.commands import CommandDescription, CommandCallable
-import commands
+from commands import commands
 import telegram.error
 import logging
 
@@ -20,8 +20,8 @@ def telegram_responser(update, context, command_response, retries=3):
 
 
 def set_commands(dispatcher):
-    for command_ditciontary in commands.commands:
-        description = CommandDescription(**command_ditciontary)
+    for command_dict in commands:
+        description = CommandDescription(**command_dict)
         logger.info(description)
         command = CommandCallable(command=description.shell_command,
                                   callback=telegram_responser,
@@ -37,7 +37,7 @@ def set_commands(dispatcher):
 
 
 def print_commands():
-    print('Favor de copiar y pegar lo siguiente en la descripción de comandos de telegram:\n')
+    print('Please, copy-paste the next list on the command description on telegram\n')
     for command_dictionary in commands.commands:
         description = CommandDescription(**command_dictionary)
         print('{} - {}'.format(description.command, description.description))

@@ -1,48 +1,48 @@
 # Telegram Shell Bot
 
-Éste es un bot para la ejecución de comandos de shell en línux a travez de un comando de bot, éstos por elmmomento son fijos.
+A bot to execute shell commands on linux through a bot commands from a Telegram Bot.
 
-# Agregar comandos
-Para agregar un nuevo comando al bot, es necesario editar el archivo `comandos.py` y agregar más elementos al array de diccionarios de la siguiente manera:
+# Add Commands
+To add a new command to the bot, you need to add them to the file `commands.py` as a dict on the array on the following way.
 ```javascript
 {
-    // Opcional, default Comando, Solo es utilizado para la descripción del comando commands
-    'description': 'Soy una descripción',
-    // Comando a ejecutar en telegram, en el bot se llama /comando
-    'command': 'comando',
-    // Comando de shell a ejecutar, éste puede ser a su vez un bash
-    'shell_command': 'echo hola',
-    // Opcional, default False, Indica si la respuesta del comando shell será enviada como respuesta del comando de telegram
+    // Optional, default Command, Just for description and maybe to generate description for telegram
+    'description': 'I am a description',
+    // Command to execute on telegram, in the bot is called as /command
+    'command': 'command',
+    // Shell command to execute, it could be a bash file
+    'shell_command': 'echo Hello World',
+    // Optional, default False, Sets if the response from the shell command will be used as response
+    // to the telegram command, otherwise, text will be used.
     'use_response': True,
-    // Opcional, default "Comando ejecutado", Es utilidado ya sea cuando el comando shell falla o cuando use_response es false y es necesario establecer una respuesta extra.
-    'text': 'Soy un mensaje de respuesta',
-    // Opcional, default False, Es utilizado para establecer si el callback que lanza la respuesta de telegram será ejecutado o no, si es True, no será enviada ninguna respuesta al cliente de telegram.
+    // Optional, default "Command Executed", it is used when the shell command has an exit status different from 0 or
+    // when use_response is setted to False and is necessary to set an extra response.
+    'text': 'I am a message',
+    // Optional, default False, Used to say if any response will be redirected to telegram, 
+    // if True, nothing will happend on telegram side.
     'no_callback': False
-    // Opcional, default None, chat_id de un group que sólo podrá ejecutar los comandos en un grupo
+    // Optional, default None, chat_id of a group if you want to execute the commands through a group or super group
     'group': None
 }
 ```
 
-Los comandos establecidos en `comandos.py` serán cargados por el archivo `telegram_utils/command_generator.py` como handlers para los comandos de telegram, y serán puestos en escucha por el bot de telegram.
+Commands on `commands.py` will be loaded by `telegram_utils/command_generator.py` as telegram handlers, and will be handled by the telegram bot.
 
-# Argumentos
+# Arguments
 ## commands
-Al ejecutar el comando:
 ```sh
 python main.py commands
 ```
+Will show in the terminal a list of the commands on `commands.py` to to copy-paste to bot father as a description for bot's commands.
 
-Éste imprimirá en terminal los comandos listados en `comandos.py` de manera conveniente para pegar en la descripción de comandos de telegram, éstos se toman de la manera `{comando} - {descripcion}`.
-
-## mensaje
+## message
 ```sh
-python main.py mensaje chat_id mensaje largo
+python main.py message [if not config.chat_id] long message
 ```
-
-Enviará un mensaje usando el cliente de telegram, util para bash.
+Sends a message using the telegram client, if you don't have any chat_if on `config.py`, you need to specify the chat id.
 
 ## archivo
 ```sh
-python main.py archivo chat_id /file
+python main.py file [if not config.chat_id] /route/to/file
 ```
-Enviará el archivo que se haya especificado.
+Will send the file, chat_id works same as message

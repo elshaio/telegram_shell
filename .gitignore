@@ -343,3 +343,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,virtualenv,pycharm+all,linux,windows,macos,vim
 config.py
+commands.py
+logs
