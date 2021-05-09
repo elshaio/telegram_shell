@@ -11,12 +11,12 @@ logger = logging.getLogger('main')
 
 
 def main():
-    logger.info('Iniciando configuración')
+    logger.info('Loading configuration')
     updater = Updater(config.telegram_token, use_context=True)
     dispatcher = updater.dispatcher
     command_generator.set_commands(dispatcher)
     updater.start_polling()
-    logger.info('Bot iniciado')
+    logger.info('Bot Started')
 
 
 def send_message(chat_id, mensaje):

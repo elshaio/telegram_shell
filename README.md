@@ -20,9 +20,12 @@ To add a new command to the bot, you need to add them to the file `commands.py` 
     'text': 'I am a message',
     // Optional, default False, Used to say if any response will be redirected to telegram, 
     // if True, nothing will happend on telegram side.
-    'no_callback': False
+    'no_callback': False,
     // Optional, default None, chat_id of a group if you want to execute the commands through a group or super group
-    'group': None
+    'group': None,
+    // Optional, default False, says if the output of command need to be ignored, useful on commands like ssh -fNR that
+    // keep stdout open and prevents the execution to finish
+    'ignore_output': True
 }
 ```
 

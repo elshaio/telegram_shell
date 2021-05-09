@@ -7,6 +7,7 @@ class CommandDescription:
         self.no_callback = kwargs.get('no_callback', False)
         self.description = kwargs.get('description', 'Command')
         self.group_id = kwargs.get('group')
+        self.ignore_output = kwargs.get('ignore_output', False)
 
     def __str__(self):
         return "{}-{}-{}-{}-{}-{}-{}".format(self.command, self.shell_command, self.response, self.text, self.no_callback, self.description, self.group_id)

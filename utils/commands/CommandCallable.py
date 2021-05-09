@@ -20,6 +20,7 @@ class CommandCallable:
         self._no_callback = kwargs.get('no_callback', False)
         self._description = kwargs.get('description', '')
         self._group_id = kwargs.get('group_id')
+        self._ignore_output = kwargs.get('ignore_output', False)
 
     def __call__(self, *args, **kwargs):
         logger.info('Ejecutando {}'.format(self._description))
@@ -46,7 +47,7 @@ class CommandCallable:
             ejecutar = True
 
         if ejecutar:
-            response = shell.execute(self._command + ' ' + text)
+            response = shell.execute(self._command + ' ' + text, ignore_output=self._ignore_output)
             text = '\n'.join(response)
         else:
             text = 'No se tienen permisos para ejecutar el comando'

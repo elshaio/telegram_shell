@@ -30,7 +30,8 @@ def set_commands(dispatcher):
                                   no_callback=description.no_callback,
                                   description=description.command,
                                   use_arg=True,
-                                  group_id=description.group_id)
+                                  group_id=description.group_id,
+                                  ignore_output=description.ignore_output)
 
         command_handler = CommandHandler(description.command, command)
         dispatcher.add_handler(command_handler)
