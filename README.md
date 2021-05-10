@@ -11,7 +11,7 @@ The current config vars for `config.py` are:
 | Variable      | type     | Description                                                                                                                                                                                                |
 | ---           | ---      | ---                                                                                                                                                                                                        |
 | telegra_token | required | Telegram token from BotFather                                                                                                                                                                              |
-| chat_id       | optional | Your unique chat_id for your personal use, if not setted, everyone can call your bot commands, you could see logs to get it or coul use (this bot)[https://github.com/elshaio/telegram_heroku] to know it  |
+| chat_id       | optional | Your unique chat_id for your personal use, if not setted, everyone can call your bot commands, you could see logs to get it or coul use [this bot](https://github.com/elshaio/telegram_heroku) to know it  |
 | logs_file     | optional | A file to save logs from the bot, default `None`.                                                                                                                                                          |
 
 # Add Commands
