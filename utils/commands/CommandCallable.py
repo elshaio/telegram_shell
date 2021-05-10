@@ -24,6 +24,7 @@ class CommandCallable:
         :param text: Default text used for responses
         :param no_callback: Says if the callback will be executed for this command
         :param group: Telegram group for specific group executions
+        :param chat: Telegram chat_id allowed to run this callable
         :param ignore_output: Says if shell response will be used or default text will be used
         """
         self._callback = kwargs.get('callback', _voidcallback)
@@ -36,6 +37,7 @@ class CommandCallable:
         self._text = kwargs.get('text', 'Command Executed')
         self._no_callback = kwargs.get('no_callback', False)
         self._group = kwargs.get('group')
+        self._chat = kwargs.get('chat')
         self._ignore_output = kwargs.get('ignore_output', False)
 
     def __call__(self, *args, **kwargs):
@@ -47,13 +49,14 @@ class CommandCallable:
         else:
             shell_command_arguments = shell_command_arguments[1]
         chat = args[0]['message']['chat']
-        logger.info(chat['id'])
         if self._group is not None:
-            chat = args[0]['message']['chat']
             if chat['type'] in ['group', 'supergroup'] and chat['id'] == self._group:
                 execute = True
         else:
-            execute = True
+            if self._chat is not None:
+                execute = self._chat == chat['id']
+            else:
+                execute = True
         if execute:
             response = shell.execute(self._command + ' ' + shell_command_arguments, ignore_output=self._ignore_output)
             execution_response = '\n'.join(response)

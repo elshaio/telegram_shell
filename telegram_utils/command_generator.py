@@ -3,6 +3,7 @@ from utils.commands import CommandDescription, CommandCallable
 from commands import commands
 import telegram.error
 import logging
+import config
 
 logger = logging.getLogger('command_generator')
 
@@ -31,6 +32,7 @@ def set_commands(dispatcher):
                                   text=description.text,
                                   no_callback=description.no_callback,
                                   group=description.group,
+                                  chat=config.chat_id,
                                   ignore_output=description.ignore_output)
         # noinspection PyTypeChecker
         command_handler = CommandHandler(description.command, command)

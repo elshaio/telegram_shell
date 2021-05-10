@@ -2,6 +2,18 @@
 
 A bot to execute shell commands on linux through a bot commands from a Telegram Bot.
 
+# Requirements
+You would need a token from a bot for telegram, you can create one calling to [BotFather](https://telegram.me/BotFather) and paste it in `config.py`.
+
+# Configuration
+The current config vars for `config.py` are:
+
+| Variable      | type     | Description                                                                                                                                                                                                |
+| ---           | ---      | ---                                                                                                                                                                                                        |
+| telegra_token | required | Telegram token from BotFather                                                                                                                                                                              |
+| chat_id       | optional | Your unique chat_id for your personal use, if not setted, everyone can call your bot commands, you could see logs to get it or coul use (this bot)[https://github.com/elshaio/telegram_heroku] to know it  |
+| logs_file     | optional | A file to save logs from the bot, default `None`.                                                                                                                                                          |
+
 # Add Commands
 To add a new command to the bot, you need to add them to the file `commands.py` as a dict on the array on the following way.
 ```javascript

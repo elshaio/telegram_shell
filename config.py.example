@@ -1,2 +1,3 @@
 telegram_token = ''
 chat_id = None
+logs_file = None
