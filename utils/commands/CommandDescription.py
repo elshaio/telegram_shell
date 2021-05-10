@@ -10,5 +10,5 @@ class CommandDescription:
         self.ignore_output = kwargs.get('ignore_output', False)
 
     def __str__(self):
-        return f"{self.description} - {self.description}"
+        return f"{self.command} - {self.description}"
 
