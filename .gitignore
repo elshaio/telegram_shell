@@ -346,3 +346,4 @@ $RECYCLE.BIN/
 config.py
 commands.py
 logs
+commands

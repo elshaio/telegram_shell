@@ -4,6 +4,7 @@ A bot to execute shell commands on linux through a bot commands from a Telegram 
 
 # Requirements
 You would need a token from a bot for telegram, you can create one calling to [BotFather](https://telegram.me/BotFather) and paste it in `config.py`.
+Then please rename `config.py.example` and `commands.py.example` removing `.example` from their file names.
 
 # Configuration
 The current config vars for `config.py` are:
