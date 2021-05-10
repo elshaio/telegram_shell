@@ -1,0 +1,16 @@
+[Unit]
+Description=Telegram Shell
+Wants=network.target
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+WorkingDirectory={{pwdpath}}
+Type=simple
+Restart=always
+RestartSec=1
+User={{username}}
+ExecStart={{pythonpath}} {{mainpath}}
+
+[Install]
+WantedBy=multi-user.target
